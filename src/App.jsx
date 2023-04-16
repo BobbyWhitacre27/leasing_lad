@@ -21,12 +21,12 @@ function App() {
               </p>
 
               <div class="mt-4 md:mt-8">
-                <a
+                <p
                   href="#"
                   class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
                 >
                   Get Started Today
-                </a>
+                </p>
               </div>
             </div>
           </div>

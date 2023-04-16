@@ -47,14 +47,5 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "tailwind.config.js",
   "author": "",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BobbyWhitacre27/leasing_lad.git"
-  },
-  "bugs": {
-    "url": "https://github.com/BobbyWhitacre27/leasing_lad/issues"
-  },
-  "homepage": "https://github.com/BobbyWhitacre27/leasing_lad#readme",
-  "keywords": []
+  "license": "ISC"
 }
