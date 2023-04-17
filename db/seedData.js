@@ -6,7 +6,7 @@ async function dropTables() {
     try {
         console.log('Dropping all tables...');
         await client.query(`
-        DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS users CASCADE;
         DROP TABLE IF EXISTS resident_card;
       `);
 

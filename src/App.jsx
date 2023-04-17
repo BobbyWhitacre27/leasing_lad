@@ -1,11 +1,23 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import { getAllResident_Cards } from './api';
 
 function App() {
-  console.log("hi")
+  const [resident_cards, setResident_Cards] = useState([])
+
+  const cards = async () => {
+    const cards = await getAllResident_Cards();
+    setResident_Cards(cards)
+  }
+
+  useEffect(() => {
+    cards()
+  }, [])
+
   return (
     <div className="App">
    
-
+{JSON.stringify(resident_cards)}
         <section class="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2">
           <div class="p-8 md:p-12 lg:px-16 lg:py-24">
             <div class="mx-auto max-w-xl text-center sm:text-left">
