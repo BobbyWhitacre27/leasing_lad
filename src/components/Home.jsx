@@ -7,75 +7,22 @@ const Home = () => {
         <section>
             <section>
 
-
-
-
-
-                {/* main */}
                 <div>
-
 
                     <div class="">
                     <video src={leasingLad_video} autoPlay loop muted plays-inline class="brightness-50 object-cover h-72 w-full" />
                     </div>
 
-                    {/* content */}
                     <div>
                         <div class="absolute flex-wrap inset-x-0 top-2 lg:mt-8  justify-center content-center text-center">
                             <h1 class="text-8xl font-bold sm:text-9xl text-white pt-16">Leasing Lad.</h1>
                             <p class="mt-4 text-white font-bold">
                                 A leasing agents best friend.
                             </p>
-
-                            {/* <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
-            <div>
-                <div class="relative">
-                    <input
-                        type="email"
-                        class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                        placeholder="Enter username"
-                    />
-
-
-                </div>
-            </div>
-
-            <div>
-                <label for="password" class="sr-only">Password</label>
-
-                <div class="relative">
-                    <input
-                        type="password"
-                        class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                        placeholder="Enter password"
-                    />
-
-                </div>
-            </div>
-
-            <div class="flex items-center justify-between">
-                <p class="text-sm text-white">
-                    <>No account? </>
-                    <Link class="underline" href="/Register">Sign up</Link>
-                </p>
-
-                <button
-                    type="submit"
-                    class="inline-block rounded-lg bg-white px-5 py-3 text-sm font-medium text-black"
-                >
-                    Sign in
-                </button>
-            </div>
-        </form> */}
                         </div>
                     </div>
                 </div>
 
-
-
-
-
-                
 
                 <section class="bg-white ">
                     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
@@ -129,7 +76,6 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-
 
 
             </section>

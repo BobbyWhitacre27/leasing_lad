@@ -1,7 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { register } from "../api"
 
 const Register = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+          const signUp = await register(username, password);
+          if(password !== confirmPassword){
+            setMessage("Passwords do not match!")
+            setUsername('');
+            setPassword('');  
+            return
+          }
+          if (signUp.error) {
+            setMessage(signUp.message);
+            setUsername('');
+            setPassword('');   
+            return;
+            }
+          if (signUp) {
+            setMessage(signUp.message);
+            setUsername('');
+            setPassword('');   
+            }
+        } catch (error) {
+            console.error("error in handleSubmit of Register.js");
+        }
+    };
+
 
     return (
         <section>
@@ -14,17 +47,22 @@ const Register = () => {
                     <p class="mt-4 text-gray-500">
                         Create your account below.
                     </p>
+
+                    {message !== "" ? <p class="mt-4 text-gray-500">
+                        {message}
+                    </p> : ""}
                 </div>
 
-                <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" onSubmit={handleSubmit}>
                     <div>
-                        <label for="email" class="sr-only">Email</label>
+                        <label for="username" class="sr-only">Username</label>
 
                         <div class="relative">
                             <input
-                                type="email"
+                              
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Create username"
+                                onChange={(e) => setUsername(e.target.value)}
                             />
 
                         </div>
@@ -38,19 +76,21 @@ const Register = () => {
                                 type="password"
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
+                                onChange={(e) => setPassword(e.target.value)}
                             />
 
                         </div>
                     </div>
 
                     <div>
-                        <label for="password" class="sr-only">Password</label>
+                        <label for="password" class="sr-only">Confirm Password</label>
 
                         <div class="relative">
                             <input
                                 type="password"
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Confirm password"
+                                onChange={(e) => setConfirmPassword(e.target.value)}
                             />
 
                         </div>

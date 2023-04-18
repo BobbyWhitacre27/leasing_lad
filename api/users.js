@@ -29,7 +29,7 @@ apiRouter.post('/register', async (req, res, next) => {
       res.send({
         error: 'UserAlreadyExist',
         name: 'UserExistsError',
-        message: `User ${username} is already taken.`,
+        message: `User ${username} is already taken!`,
       });
     }
     const user = await createUser({ username, password });
@@ -43,7 +43,7 @@ apiRouter.post('/register', async (req, res, next) => {
     );
 
     res.send({
-      message: 'User successfully registered',
+      message: 'Account successfully created!',
       token,
       user,
     });
