@@ -1,12 +1,12 @@
 import React, { useState, useEffect }  from "react";
 
-const Past_moves = () => {
+const Home = () => {
     
     return (
         <section>
-            Past Move-ins
+
         </section>
 )
 }
 
-export default Past_moves; 
+export default Home; 
