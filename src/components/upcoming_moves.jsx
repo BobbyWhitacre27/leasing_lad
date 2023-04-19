@@ -31,9 +31,9 @@ const Upcoming_moves = () => {
                         + Add New Resident
                     </button>
                 </Link>
-
+                <div class="flex justify-center">
                 <Link to="/Resident_card">
-                    <a class="group relative block h-64 sm:h-64 lg:h-64 w-80 mt-8">
+                    <a class="group relative block h-64 sm:h-64 lg:h-64 w-80 mt-8 mx-4">
                         <span class="absolute inset-0 border-2 border-dashed border-black"></span>
 
                         <div
@@ -65,7 +65,8 @@ const Upcoming_moves = () => {
                     </a>
                 </Link>
 
-
+             
+                </div>
             </div>
         </section>
     )
