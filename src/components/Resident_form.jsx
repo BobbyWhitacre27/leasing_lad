@@ -1,6 +1,94 @@
 import React, { useState, useEffect }  from "react";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
-const Resident_form = () => {
+
+const Resident_form = ({user}) => {
+    const [name, setName] = useState('');
+    const [apartment, setApartment] = useState('');
+    const [rent, setRent] = useState('');
+    const [leaseTerm, setLeaseTerm] = useState('');
+    const [moveDate, setMoveDate] = useState([]);
+    const [approvalDocsSent, setApprovalDocsSent] = useState(false);
+    const [leaseSent, setLeaseSent] = useState(false);
+    const [electricSetUp, setElectricSetUp] = useState(false);
+    const [insuranceSetUp, setInsuranceSetUp] = useState(false);
+    const [leaseSigned, setLeaseSigned] = useState(false);
+    const [paymentMade, setPaymentMade] = useState(false);
+    const [notes, setNotes] = useState("");
+    const [movedIn, setMovedIn] = useState(false);
+
+
+    const handleName = event => {
+        setName(event.target.value)
+    }
+
+    const handleApartment = event => {
+        setApartment(event.target.value)
+    }
+
+    const handleRent = event => {
+        setRent(event.target.value)
+    }
+
+    const handleLeaseTerm = event => {
+        setLeaseTerm(event.target.value)
+    }
+
+    // const handleMoveDate = event => {
+    //     setMoveDate(event.target.value)
+    // }
+
+    const handleApprovalDocsSent = event => {
+        if(approvalDocsSent === false){
+            return setApprovalDocsSent(true)
+        }
+        setApprovalDocsSent(false)
+    }
+
+    const handleLeaseSent = event => {
+        if(leaseSent === false){
+            return setLeaseSent(true)
+        }
+        setLeaseSent(false)
+    }
+
+    const handleElectricSetUp = event => {
+        if(electricSetUp === false){
+            return setElectricSetUp(true)
+        }
+        setElectricSetUp(false)
+    }
+
+    const handleInsuranceSetUp = event => {
+        if(insuranceSetUp === false){
+            return setInsuranceSetUp(true)
+        }
+        setInsuranceSetUp(false)
+    }
+
+    const handleLeaseSigned = event => {
+        if(leaseSigned === false){
+            return setLeaseSigned(true)
+        }
+        leaseSigned(false)
+    }
+
+    const handlePaymentMade = event => {
+        if(paymentMade === false){
+            return setPaymentMade(true)
+        }
+        setPaymentMade(false)
+    }
+
+    const handleNotes = event => {
+        setNotes(event.target.value)
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        console.log({name, apartment, rent, moveDate, leaseTerm, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, notes, movedIn})
+    }
 
 
     return (
@@ -8,20 +96,21 @@ const Resident_form = () => {
             <div class="w-3/4 m-auto">
             <h1 class="text-black text-5xl font-bold">Add a New Resident</h1>
             </div>
-
+            <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+            <script src="../path/to/flowbite/dist/datepicker.js"></script>
 
 
 <section class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-      <div class="lg:col-span-2 lg:py-12">
-        <p class="max-w-xl text-lg">
+      <div class="lg:m-0 sm:m-auto lg:col-span-2 lg:py-12">
+        <p class="max-w-xl text-lg font-bold">
        Congrats on your new lease! 🎊
         </p>
-        <p class="max-w-xl text-lg mt-8">
-       Let's make sure we are all prepared for move-in. Please fill out the form to begin tracking theirprogress.
+        <p class="max-w-xl text-lg mt-8 ">
+       Let's make sure we are all prepared for move-in. Please fill out the form to begin tracking move-in progress.
         </p>
-        <p class="max-w-xl text-lg mt-8">
+        <p class="max-w-xl text-lg mt-8 font-bold">
        Then go get more leases. 😎
         </p>
 
@@ -37,6 +126,7 @@ const Resident_form = () => {
               placeholder="Name(s)"
               type="text"
               id="name"
+              onChange={handleName}
             />
           </div>
 
@@ -48,6 +138,7 @@ const Resident_form = () => {
                 placeholder="Apartment #"
                 type="text"
                 id="apartment"
+                onChange={handleApartment}
               />
             </div>
 
@@ -58,8 +149,15 @@ const Resident_form = () => {
                 placeholder="Monthly Rent"
                 type="text"
                 id="rent"
+                onChange={handleRent}
               />
             </div>
+
+   
+              
+            
+
+    
             <div>
               <label class="sr-only" >Lease Term</label>
               <input
@@ -67,35 +165,43 @@ const Resident_form = () => {
                 placeholder="Lease Term (# of Months)"
                 type="text"
                 id="leaseterm"
+                onChange={handleLeaseTerm}
               />
             </div>
             
           </div>
 
-          <div class="grid justify-start text-left">
-            <h1 class="font-bold">Leasing Agent Tasks:</h1>
-            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  /><h1>Reservation Agreement & Approval Letter Sent?</h1></div>
-            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  /><h1>Lease Sent?</h1></div>
+          <div>
+            <h1 class="font-bold mb-2 text-3xl">Move-in Date</h1>
+            <DatePicker inline  onChange={(date) => setMoveDate(date)}/>
+            </div>
+
+
+          <div class="grid justify-start text-left mt-4">
+            <h1 class="font-bold text-xl">Leasing Agent Tasks:</h1>
+            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5" onClick={handleApprovalDocsSent} /><h1>Reservation Agreement & Approval Letter Sent?</h1></div>
+            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5" onClick={handleLeaseSent} /><h1>Lease Sent?</h1></div>
           </div>
 
           <hr></hr>
 
           <div class="grid justify-start text-left">
-            <h1 class="font-bold">Future Resident Tasks:</h1>
-            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  /><h1>Electric set-up?</h1></div>
-            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  /><h1>Renter's Insurance set-up?</h1></div>
-            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  /><h1>Lease signed?</h1></div>
-            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  /><h1>Paid move-in funds?</h1></div>
+            <h1 class="font-bold text-xl">Future Resident Tasks:</h1>
+            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  onClick={handleElectricSetUp}/><h1>Electric set-up?</h1></div>
+            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  onClick={handleInsuranceSetUp}/><h1>Renter's Insurance set-up?</h1></div>
+            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  onClick={handleLeaseSigned}/><h1>Lease signed?</h1></div>
+            <div class="flex mt-2"><input type="checkbox" class="mr-2 w-5 h-5"  onClick={handlePaymentMade}/><h1>Paid move-in funds?</h1></div>
           </div>
 
           <div>
-            <label class="sr-only" for="message">Account Notes</label>
+            <label class="sr-only" for="message" >Account Notes</label>
 
             <textarea
               class="w-full rounded-lg border-black border-1 p-3 text-sm"
               placeholder="Account Notes"
               rows="8"
               id="message"
+              onChange={handleNotes}
             ></textarea>
           </div>
 
@@ -103,6 +209,7 @@ const Resident_form = () => {
             <button
               type="submit"
               class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+              onClick={handleSubmit}
             >
               Add Future Resident
             </button>

@@ -55,7 +55,7 @@ const Upcoming_moves = () => {
                             <div
                                 class="absolute p-2 opacity-0  group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8"
                             >
-                                <h3 class="mt-12 text-3xl text-black font-bold sm:text-3xl">Click to Update!</h3>
+                                <h3 class="mt-12 text-3xl text-black font-bold sm:text-3xl ">Click to Update!</h3>
                                 <ul class="text-black text-xl mt-4 font-bold">
                                     <li>Lease Term: 13 Months</li>
                                     <li>Rent: $2,300</li>
