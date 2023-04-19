@@ -20,8 +20,11 @@ const Login = ({ setToken, setUser }) => {
             }
             const logIn = await login(username, password);
             if (logIn.error) {
+                if(logIn.message === "Cannot read properties of undefined (reading 'password')"){
+                    setMessage("Please check username or password")
+                    return
+                }
                 setMessage(logIn.message);
-
             } else {
                 setMessage(logIn.message)
                 setToken(logIn.token);

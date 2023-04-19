@@ -1,22 +1,11 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Routes, Switch } from 'react-router-dom';
-import { getAllResident_Cards } from './api';
-import { Login, Register, Header, Footer, Upcoming_moves, Past_moves, Home, Profile } from './components/index';
+import { Login, Register, Header, Footer, Upcoming_moves, Past_moves, Home, Profile, Resident_form, Resident_card } from './components/index';
 
 function App() {
-  const [resident_cards, setResident_Cards] = useState({});
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
-
-  const cards = async () => {
-    const cards = await getAllResident_Cards();
-    setResident_Cards(cards)
-  }
-
-  useEffect(() => {
-    cards()
-  }, [])
 
   return (
     <div className="App">
@@ -29,6 +18,9 @@ function App() {
           <Route path="/Upcoming_moves" element={<Upcoming_moves/>} />
           <Route path="/Past_moves" element={<Past_moves/>} />
           <Route path="/Profile" element={<Profile user={user} />} />
+          <Route path="/Resident_form" element={<Resident_form user={user} />} />
+          <Route path="/Resident_form" element={<Resident_form user={user} />} />
+          <Route path="/Resident_card" element={<Resident_card user={user} />} />
         </Routes>
         <footer><Footer></Footer></footer>
       </BrowserRouter>

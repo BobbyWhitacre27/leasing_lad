@@ -31,12 +31,12 @@ const Header = ({ user, setUser, setToken, token }) => {
         : "";
 
     const logInSingUpLogOutButtons = token !== "" ?
-        <div
+        <button
             class="block rounded-md bg-white border-black border-2 px-5 py-2.5 text-sm font-medium text-black"
             onClick={logout}
         >
             Log Out
-        </div>
+        </button>
 
         :
         <div class="sm:flex sm:gap-4">
