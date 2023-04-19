@@ -21,7 +21,7 @@ apiRouter.post('/register', async (req, res, next) => {
       res.send({
         error: 'PasswordInvalid',
         name: 'PasswordTooShort',
-        message: 'Password Too Short!',
+        message: 'Password Too Short! Must be at least 8 characters.',
       });
     }
     const checkUser = await getUserbyUsername(username);
@@ -65,6 +65,7 @@ apiRouter.post('/login', async (req, res, next) => {
       });
     }
     const user = await getUser({ username, password });
+    console.log({user})
     if (!user) {
   
       next({

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { register } from "../api"
+import { Link, useNavigate } from "react-router-dom";
+import { register, login } from "../api"
 
-const Register = () => {
+const Register = ({setUser, setToken}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -15,25 +16,29 @@ const Register = () => {
           const signUp = await register(username, password);
           if(password !== confirmPassword){
             setMessage("Passwords do not match!")
-            setUsername('');
-            setPassword('');  
             return
           }
           if (signUp.error) {
             setMessage(signUp.message);
-            setUsername('');
-            setPassword('');   
             return;
             }
           if (signUp) {
-            setMessage(signUp.message);
-            setUsername('');
-            setPassword('');   
+            const logIn = await login(username, password);
+            if (logIn.error) {
+                setMessage(logIn.message);
+            } else {
+                setToken(logIn.token);
+                setUser(logIn.user);
+                localStorage.setItem('token', JSON.stringify(logIn.token));
+                navigate('/Profile');
+            }
             }
         } catch (error) {
             console.error("error in handleSubmit of Register.js");
         }
     };
+
+    const registerMessage = message !== "" ? <p class="mt-4 text-gray-500">{message}</p> : ""
 
 
     return (
@@ -47,10 +52,7 @@ const Register = () => {
                     <p class="mt-4 text-gray-500">
                         Create your account below.
                     </p>
-
-                    {message !== "" ? <p class="mt-4 text-gray-500">
-                        {message}
-                    </p> : ""}
+                        {registerMessage}  
                 </div>
 
                 <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" onSubmit={handleSubmit}>
