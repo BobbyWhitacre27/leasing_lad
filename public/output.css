@@ -1652,3 +1652,9 @@ code {
     padding-right: 2rem;
   }
 }
+
+.cardsDisplay{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

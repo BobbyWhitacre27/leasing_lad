@@ -43,7 +43,7 @@ async function createTables() {
         received_payment BOOLEAN,
         notes TEXT,
         moved_in BOOLEAN,
-        user_id INTEGER REFERENCES users(id)
+        "user_id" INTEGER REFERENCES users(id)
       );
   
       `);

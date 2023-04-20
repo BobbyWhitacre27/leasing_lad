@@ -16,11 +16,12 @@ async function createResident_Card({
     moved_in,
     user_id
 }) {
+    
     const {
         rows: [resident_card],
     } = await client.query(
         `
-    INSERT INTO resident_card (name, apartment, move_in_date, rent, lease_term, sent_approval_docs, sent_lease, received_electric, received_insurance, received_signed_lease, received_payment, notes, moved_in, user_id) 
+    INSERT INTO resident_card (name, apartment, move_in_date, rent, lease_term, sent_approval_docs, sent_lease, received_electric, received_insurance, received_signed_lease, received_payment, notes, moved_in, "user_id") 
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) 
     RETURNING *;
     `,

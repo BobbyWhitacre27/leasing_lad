@@ -29,7 +29,7 @@ export async function createResident_Card(
 ) {
     try {
 
-        const res = await fetch(`${APIURL}/cars`, {
+        const res = await fetch(`${APIURL}/resident_card`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export async function deleteResident_Card(id) {
     }
 }
 
-export async function editCarPosting(
+export async function editResidentCard(
     id,
     name,
     apartment,
@@ -93,7 +93,7 @@ export async function editCarPosting(
 ) {
     try {
 
-        const res = await fetch(`${APIURL}/cars/${id}`, {
+        const res = await fetch(`${APIURL}/resident_card/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

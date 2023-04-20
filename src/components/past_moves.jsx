@@ -1,6 +1,8 @@
 import React, { useState, useEffect }  from "react";
 
 const Past_moves = () => {
+
+    
     
     return (
         <section class="mb-8 mt-8">
