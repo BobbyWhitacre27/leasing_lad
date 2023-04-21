@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { getAllResident_Cards, deleteResident_Card } from '../api';
 
-const Upcoming_moves = ({user}) => {
+const Upcoming_moves = ({ user }) => {
     const [resident_cards, setResident_Cards] = useState([]);
     const [select, setSelect] = useState(false);
     const [selectedId, setSelectedId] = useState('')
@@ -90,12 +90,14 @@ const Upcoming_moves = ({user}) => {
         setIsDeleteCard(true)
         await deleteResident_Card(id)
         setIsDeleteCard(false)
-        }
+    }
 
 
     const userFilter = resident_cards.filter((u) => user.id === u.user_id)
 
-    const sortByDate = userFilter.sort((a, b) => new Date(a.move_in_date) - new Date(b.move_in_date))
+    const notMovedInFilter = userFilter.filter((u) => u.moved_in === false)
+
+    const sortByDate = notMovedInFilter.sort((a, b) => new Date(a.move_in_date) - new Date(b.move_in_date))
 
     const residentCard = sortByDate.map((c) => {
 
@@ -106,9 +108,15 @@ const Upcoming_moves = ({user}) => {
             <section class="mb-8 mt-8">
                 <div class="w-3/4 m-auto">
                     <div class="rounded-lg mt-8 bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                        <div class="flex justify-between">
-                            <h1 class="text-black text-3xl font-bold">{c.name}</h1>
-                            <button class="text-white bg-black font-bold p-2 rounded-xl mb-2" onClick={handleSelect}>Close</button>
+                        <div class="flexn">
+                            <div>
+                                <h1 class="flex text-black text-3xl font-bold">{c.name}</h1>
+                                <h1 class="flex text-black text-md font-bold">APT #{c.apartment}</h1>
+                                <h1 class="flex text-black text-md font-bold">Move-in: {newDate}</h1>
+                                <h1 class="flex text-black text-md font-bold">Rent: ${c.rent}</h1>
+                                <h1 class="flex text-black text-md font-bold">Lease Term: {c.lease_term} Months</h1>
+                            </div>
+
                         </div>
                         <h1 class="font-bold text-red-600 mb-2"></h1>
                         <div action="" class="space-y-4">
@@ -146,14 +154,14 @@ const Upcoming_moves = ({user}) => {
 
                             <div class="flex justify-between">
                                 <button
-                                    
+
                                     class="inline-block w-full rounded-lg border-black border-2 bg-white px-5 py-3 font-medium text-black sm:w-auto"
                                     onClick={(event) => handleDeleteResidentCard(c.id)}
                                 >
                                     Delete Resident
                                 </button>
                                 <button
-                                    
+
                                     class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
 
                                 >
@@ -171,26 +179,51 @@ const Upcoming_moves = ({user}) => {
             </section>
         </div>)
 
+
+
         const residentCards = (<div class="mb-4 mt-4">
-        <button onClick={(event) => handleSelect(c.id)} class="lg:flex md:flex justify-between sm:flex-wrap w-full font-bold bg-black text-white border-black border-2 p-4 rounded-3xl">
+            <div class="overflow-x-auto border-2 rounded-xl">
+                <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
+                    <tbody class=" divide-y divide-gray-200">
+                        <tr class="grid grid-cols-4 pt-8 text-xl pb-2">
+                            <td class="whitespace-nowrap px-4 font-bold text-gray-700">{c.name}</td>
+                            <td class="whitespace-nowrap pb-4 px-4 text-gray-900">
+                                {c.apartment}
+                            </td>
+                            <td class="whitespace-nowrap px-4  text-gray-700">{newDate}</td>
+                            <td class="whitespace-nowrap px-4 ">
+                                {select === true & selectedId === c.id ?
+                                    <button
 
-            <h1>APT #{c.apartment}</h1>
-            <h1>{c.name}</h1>
-            <h1>{newDate}</h1>
-            <h1>80%</h1>
-            {/* {select === true & selectedId === c.id ? <h1>Close</h1> : <h1>Details</h1>} */}
+                                        class="inline-block rounded bg-black px-4 py-2 text-xs font-medium text-white hover:bg-slate-800"
+                                        onClick={(event) => handleSelect(c.id)}
+                                    >
+                                        Close
+                                    </button> :
+                                    <button
 
-        </button>
-        {select === true & selectedId === c.id ? editForm : ""}
-    </div>)
+                                        class="inline-block rounded bg-black px-4 py-2 text-xs font-medium text-white hover:bg-slate-800"
+                                        onClick={(event) => handleSelect(c.id)}
+                                    >
+                                        View
+                                    </button>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                {select === true & selectedId === c.id ? editForm : ""}
+            </div>
 
-    
+        </div>)
+
+
 
         return residentCards
 
     })
 
-  
+
 
     useEffect(() => {
         cards()
@@ -199,9 +232,11 @@ const Upcoming_moves = ({user}) => {
 
 
     return (
-        <section class="mb-12 mt-8">
+        <section class="mb-24 mt-8">
             <div class="w-3/4 m-auto">
                 <h1 class="text-black text-5xl font-bold">Future Move-in's</h1>
+
+
 
                 <Link to="/Resident_form">
                     <button
@@ -212,6 +247,21 @@ const Upcoming_moves = ({user}) => {
                 </Link>
 
                 <div class="mt-8">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
+                            <tbody class="border-b-4 border-black">
+                                <tr class="grid grid-cols-4 text-2xl font-bold">
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">Name</td>
+                                    <td class="whitespace-nowrap px-4 py-2  text-black">Apartment</td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">Move-in</td>
+                                    <td class="whitespace-nowrap px-4 py-2">Select</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
                     {residentCard}
                 </div>
 
