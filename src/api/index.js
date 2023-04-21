@@ -156,3 +156,30 @@ export const login = async (username, password) => {
     return json;
 };
 
+// updates
+
+export async function updateApprovalDocs(
+    id,
+    sent_approval_docs
+  ) {
+    console.log({id, sent_approval_docs})
+    try {
+  
+      const res = await fetch(`${APIURL}/resident_card/${id}/approvaldocs`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            sent_approval_docs: sent_approval_docs,
+        }),
+      });
+  
+      const json = res.json();
+    
+      return json;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+

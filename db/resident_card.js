@@ -112,6 +112,30 @@ async function updateResident_Card({
     return resident_card;
 }
 
+
+
+async function updateApprovalDocs({
+    id,
+    sent_approval_docs
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET sent_approval_docs=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [sent_approval_docs]
+    );
+
+    return resident_card;
+}
+
+
+
 async function deleteResident_Card(id) {
     const {
         rows: [resident_card],
@@ -134,4 +158,5 @@ module.exports = {
     getResident_CardByName,
     updateResident_Card,
     deleteResident_Card,
+    updateApprovalDocs
 };

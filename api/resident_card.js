@@ -8,6 +8,7 @@ const {
     getResident_CardByName,
     updateResident_Card,
     deleteResident_Card,
+    updateApprovalDocs
 } = require('../db/resident_card');
 
 
@@ -106,6 +107,29 @@ apiRouter.patch('/:resident_card_id', async (req, res, next) => {
             notes,
             moved_in,
             user_id
+        })
+
+        res.send(
+            updateResident_Card
+        )
+    } catch (error) {
+        next(error)
+    }
+});
+
+// update approval docs
+apiRouter.patch('/:resident_card_id/approvaldocs', async (req, res, next) => {
+    console.log("test")
+
+    try {
+        const id = req.params.resident_card_id;
+        const {
+            sent_approval_docs,
+        } = req.body;
+
+        const updateResident_Card = await updateApprovalDocs({
+            id: id,
+            sent_approval_docs
         })
 
         res.send(
