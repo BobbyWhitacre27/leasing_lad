@@ -249,10 +249,19 @@ const Resident_form = ({ user }) => {
                                     ></textarea>
                                 </div>
 
-                                <div class="mt-4">
+                                <div class="md:flex lg:flex sm:flex-wrap justify-between gap-4 mt-4">
+
+                                <Link to="/Upcoming_moves">
+                                <button
+                                        type="submit"
+                                        class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto mt-2"
+                                    >
+                                        Cancel
+                                    </button>
+                                    </Link>
                                     <button
                                         type="submit"
-                                        class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                                        class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto mt-2"
                                         onClick={handleSubmit}
                                     >
                                         Add Future Resident
