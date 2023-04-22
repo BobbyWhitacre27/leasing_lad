@@ -82,14 +82,14 @@ async function updateResident_Card({
     received_payment,
     notes,
     moved_in,
-    user_id }) {
+    user_id}) {
 
     const {
         rows: [resident_card],
     } = await client.query(
         `
       UPDATE resident_card
-      SET name=$1, apartment=$2, move_in_date=$3, rent=$4, lease_term=$5, sent_approval_docs=$6, sent_lease=$7, received_electric=$8, received_insurance=$9, received_signed_lease=$10, received_payment=$11, notes=$12, moved_in=$13, user_id=$14
+      SET name=$1, apartment=$2, move_in_date=$3, rent=$4, lease_term=$5, sent_approval_docs=$6, sent_lease=$7, received_electric=$8, received_insurance=$9, received_signed_lease=$10, received_payment=$11, notes=$12, moved_in=$13, "user_id"=$14
       WHERE id=${id}
       RETURNING *;
     `,

@@ -17,7 +17,7 @@ const {
     updateNotes,
     updateMovedIn
 } = require('../db/resident_card');
-const { getResidentCardsById } = require('../src/api');
+const { getResidentCardsById } = require('../src/api/index.js');
 
 
 // Get all cards
@@ -33,7 +33,7 @@ apiRouter.get('/', async (req, res, next) => {
     }
 });
 
-apiRouter.get('/resident_card/:id', async (req, res, next) => {
+apiRouter.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const resident_card = await getResidentCardsById(id)

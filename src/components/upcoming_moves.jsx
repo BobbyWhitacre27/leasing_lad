@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {
     getAllResident_Cards,
-    getResidentCardsById,
+    // getResidentCardsById,
     deleteResident_Card,
     updateApprovalDocs,
     updateSentLease,
@@ -19,7 +19,7 @@ import {
 
 const Upcoming_moves = ({ user }) => {
     const [resident_cards, setResident_Cards] = useState([]);
-    const [resident_cardsById, setResident_CardsById] = useState([]);
+    // const [resident_cardsById, setResident_CardsById] = useState([]);
     const [select, setSelect] = useState(false);
     const [selectedId, setSelectedId] = useState('')
 
@@ -119,13 +119,14 @@ const Upcoming_moves = ({ user }) => {
     }
     console.log({ resident_cards })
 
-    const userId = user.id
+    // const userId = user.id
 
-    const cardsById = async (userId) => {
-        const cards = await getAllResident_Cards(userId);
-        setResident_CardsById(cards)
-    }
+    // const cardsById = async () => {
+    //     const cards = await getResidentCardsById(userId);
+    //     setResident_CardsById(cards)
+    // }
 
+    // console.log({ resident_cardsById })
 
     const handleSelect = (id) => {
         if (select === false) {
@@ -314,8 +315,7 @@ const Upcoming_moves = ({ user }) => {
 
     useEffect(() => {
         cards()
-        // cardsById(userId)
-    }, [isDeleteCard, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, notes, movedIn, isUpdateNotes])
+    }, [isDeleteCard, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, movedIn, isUpdateNotes])
 
 
 
