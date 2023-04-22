@@ -11,16 +11,16 @@ async function getAllResident_Cards() {
     }
 }
 
-// async function getResidentCardsById(id) {
+async function getResidentCardsById(id) {
 
-//     try {
-//         const res = await fetch(`${APIURL}/resident_card/${id}`);
-//         const json = await res.json();
-//         return json;
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }
+    try {
+        const res = await fetch(`${APIURL}/resident_card/${id}`);
+        const json = await res.json();
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 async function createResident_Card(
     name,
@@ -367,6 +367,7 @@ module.exports = {
     editResidentCard,
     createResident_Card,
     getAllResident_Cards,
+    getResidentCardsById,
     deleteResident_Card,
     updateApprovalDocs,
     updateSentLease,

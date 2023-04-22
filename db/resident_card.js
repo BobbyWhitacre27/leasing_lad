@@ -45,10 +45,8 @@ async function getResident_CardById(id) {
     } = await client.query(
         `
     SELECT * FROM resident_card
-    WHERE id=$1;
-  `,
-        [id]
-    );
+    WHERE id=${id};
+  `);
 
     return resident_card;
 }

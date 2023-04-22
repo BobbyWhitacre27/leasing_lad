@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import {
     getAllResident_Cards,
-    // getResidentCardsById,
+    getResidentCardsById,
     deleteResident_Card,
     updateApprovalDocs,
     updateSentLease,
@@ -19,7 +19,7 @@ import {
 
 const Upcoming_moves = ({ user }) => {
     const [resident_cards, setResident_Cards] = useState([]);
-    // const [resident_cardsById, setResident_CardsById] = useState([]);
+    const [resident_cardsById, setResident_CardsById] = useState([]);
     const [select, setSelect] = useState(false);
     const [selectedId, setSelectedId] = useState('')
 
@@ -105,6 +105,7 @@ const Upcoming_moves = ({ user }) => {
     }
 
     const handleMovedIn = async (id) => {
+        alert("🥳 Congratulations on the new move-in!! This resident will be moved to the 'Past Move-in's' page.")
         if (movedIn === false) {
             await updateMovedIn(id, true)
             return setMovedIn(true)
@@ -119,14 +120,16 @@ const Upcoming_moves = ({ user }) => {
     }
     console.log({ resident_cards })
 
-    // const userId = user.id
+    const userId = user.id
 
-    // const cardsById = async () => {
-    //     const cards = await getResidentCardsById(userId);
-    //     setResident_CardsById(cards)
-    // }
+    console.log({userId})
 
-    // console.log({ resident_cardsById })
+    const cardsById = async () => {
+        const cards = await getResidentCardsById(userId);
+        setResident_CardsById(cards)
+    }
+
+    console.log({ resident_cardsById })
 
     const handleSelect = (id) => {
         if (select === false) {
@@ -143,6 +146,8 @@ const Upcoming_moves = ({ user }) => {
         await deleteResident_Card(id)
         setIsDeleteCard(false)
     }
+
+
 
 
     const userFilter = resident_cards.filter((u) => user.id === u.user_id)
@@ -242,7 +247,7 @@ const Upcoming_moves = ({ user }) => {
                             </div>
 
 
-                            <div class="flex justify-between">
+                            <div class="md:flex sm:flex-wrap-reverse justify-between sm:gap-4">
                                 <button
 
                                     class="inline-block w-full rounded-lg border-black border-2 bg-white px-5 py-3 font-medium text-black sm:w-auto"
@@ -258,7 +263,7 @@ const Upcoming_moves = ({ user }) => {
                                     Update notes
                                 </button>
                             </div>
-                            <div><button class="flex h-8 mt-2" onClick={(event) => handleMovedIn(c.id)}><div>{movedIn === false ? "" : <img class="h-5 pr-2" src={checked} />}</div><h1>Moved-in?</h1></button></div>
+                            <button class="px-8 py-3 mt-4 font-bold bg-blue-500 text-3xl text-white hover:bg-blue-400 rounded-lg" onClick={() => handleMovedIn(c.id)}><h1>Move-in Resident</h1></button>
 
                             <div class="mt-2">
 
@@ -275,7 +280,7 @@ const Upcoming_moves = ({ user }) => {
             <div class="overflow-x-auto border-2 rounded-xl">
                 <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
                     <tbody class=" divide-y divide-gray-200">
-                        <tr class="grid grid-cols-4 pt-8 text-xl pb-2">
+                        <tr class="grid grid-cols-4 pt-8 lg:text-xl sm:text-sm  pb-2">
                             <td class="whitespace-nowrap px-4 font-bold text-gray-700">{c.name}</td>
                             <td class="whitespace-nowrap pb-4 px-4 text-gray-900">#{c.apartment}</td>
                             <td class="whitespace-nowrap px-4  text-gray-700">{newDate}</td>
@@ -315,13 +320,14 @@ const Upcoming_moves = ({ user }) => {
 
     useEffect(() => {
         cards()
+        cardsById()
     }, [isDeleteCard, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, movedIn, isUpdateNotes])
 
 
 
     return (
         <section class="mb-24 mt-8">
-            <div class="w-3/4 m-auto">
+            <div class="lg:w-3/4 md:w-3/4 sm:w-[7/8] m-auto">
                 <h1 class="text-black text-5xl font-bold">Future Move-in's</h1>
 
 
@@ -338,7 +344,7 @@ const Upcoming_moves = ({ user }) => {
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
                             <tbody class="border-b-4 border-black">
-                                <tr class="grid grid-cols-4 text-2xl font-bold">
+                                <tr class="grid grid-cols-4 lg:text-2xl sm:text-sm font-bold">
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700">Name</td>
                                     <td class="whitespace-nowrap px-4 py-2  text-black">Apartment</td>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700">Move-in</td>
@@ -350,7 +356,7 @@ const Upcoming_moves = ({ user }) => {
                         </table>
                     </div>
 
-                    {residentCard}
+                    {notMovedInFilter.length >= 1 ? residentCard : <div class="mt-8 font-bold">None at this time.</div>}
                 </div>
 
             </div>

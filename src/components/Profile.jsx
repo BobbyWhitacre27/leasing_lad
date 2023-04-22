@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAllResident_Cards } from '../api';
+import { getAllResident_Cards } from '../api/index.js';
 
 const Profile = ({ user }) => {
 
@@ -20,9 +20,11 @@ const Profile = ({ user }) => {
 
     const notMovedInFilter = userFilter.filter((u) => u.moved_in === false)
 
+    const movedInFilter = userFilter.filter((u) => u.moved_in === true)
+
     const numberOfFutreMoveIns = notMovedInFilter.length
 
-    const numberOfPastMoveIns = (notMovedInFilter.length) - numberOfFutreMoveIns
+    const numberOfPastMoveIns = movedInFilter.length
 
     return (
         <section class="mb-8 mt-8">
@@ -32,14 +34,14 @@ const Profile = ({ user }) => {
                 <h1 class="text-xl mt-8">About your account:</h1>
                 <p>Username: {user.username}</p>
                 <div class="flex sm:flex-wrap justify-center gap-8 mt-8">
-                    <div class="font-bold"><h1 class="text-3xl">Future Move-ins</h1><h2 class="text-8xl">{numberOfFutreMoveIns}</h2></div>
-                    <div class="font-bold"><h1 class="text-3xl">Past Move-ins</h1><h2 class="text-8xl">{numberOfPastMoveIns}</h2></div>
+                    <div class="font-bold"><h1 class="lg:text-3xl md:text-3xl sm:text-md">Future Move-ins</h1><h2 class="text-8xl">{numberOfFutreMoveIns}</h2></div>
+                    <div class="font-bold"><h1 class="lg:text-3xl md:text-3xl sm:text-md">Past Move-ins</h1><h2 class="text-8xl">{numberOfPastMoveIns}</h2></div>
                 </div>
 
-                <div class="lg:flex md:flex sm:flex-wrap justify-center gap-4 mt-10">
+                <div class="lg:flex md:flex sm:flex-wrap justify-center sm:gap-4 mt-10 sm:py-4">
                     <Link to="/Upcoming_moves">
                         <button
-                            class="block rounded-md bg-white border-black border-2 lg:px-5 sm:px-2 py-2.5 text-sm font-medium text-black w-72"
+                            class="block rounded-md bg-white border-black border-2 py-2.5 text-sm font-medium text-black w-72"
 
                         >
                             Future Move-in's
@@ -47,7 +49,7 @@ const Profile = ({ user }) => {
                     </Link>
                     <Link to="/Past_moves">
                         <button
-                            class="block rounded-md bg-white border-black border-2 lg:px-5 sm:px-2 py-2.5 text-sm font-medium text-black w-72"
+                            class="block rounded-md bg-white border-black border-2 py-2.5 text-sm font-medium text-black w-72"
 
                         >
                             Past Move-in's

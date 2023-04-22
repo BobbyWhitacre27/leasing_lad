@@ -5,7 +5,6 @@ const {
     createResident_Card,
     getAllResident_Cards,
     getResident_CardById,
-    getResident_CardByName,
     updateResident_Card,
     deleteResident_Card,
     updateApprovalDocs,
@@ -36,7 +35,7 @@ apiRouter.get('/', async (req, res, next) => {
 apiRouter.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
-        const resident_card = await getResidentCardsById(id)
+        const resident_card = await getResident_CardById(id)
 
         res.send(
             resident_card

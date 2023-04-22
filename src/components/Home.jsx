@@ -14,8 +14,8 @@ const Home = () => {
                     </div>
 
                     <div>
-                        <div class="absolute flex-wrap inset-x-0 top-2 lg:mt-8  justify-center content-center text-center">
-                            <h1 class="text-8xl font-bold sm:text-9xl text-white pt-16">Leasing Lad.</h1>
+                        <div class="absolute flex-wrap inset-x-0 top-2 mt-8  justify-center content-center text-center">
+                            <h1 class="text-8xl font-bold text-white mt-14">Leasing Lad.</h1>
                             <p class="mt-4 text-white font-bold">
                                 A leasing agents best friend.
                             </p>

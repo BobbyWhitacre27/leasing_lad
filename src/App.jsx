@@ -16,7 +16,7 @@ function App() {
           <Route path="/Login" element={<Login setToken={setToken} setUser={setUser}/>}  />
           <Route path="/Register" element={<Register setToken={setToken} setUser={setUser}/>} setToken={setToken} setUser={setUser} />
           <Route path="/Upcoming_moves" element={<Upcoming_moves user={user}/>} />
-          <Route path="/Past_moves" element={<Past_moves/>} />
+          <Route path="/Past_moves" element={<Past_moves user={user}/>} />
           <Route path="/Profile" element={<Profile user={user} />} />
           <Route path="/Resident_form" element={<Resident_form user={user} />} />
           <Route path="/Resident_form" element={<Resident_form user={user} />} />

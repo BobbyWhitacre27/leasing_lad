@@ -41,19 +41,19 @@ const Header = ({ user, setUser, setToken, token }) => {
         :
         <div class="sm:flex sm:gap-4">
             <Link to="/Login">
-                <div
+                <button
                     class="block rounded-md bg-white border-black border-2 px-5 py-2.5 text-sm font-medium text-black"
                 >
                     Log In
-                </div>
+                </button>
             </Link>
             <Link to="/Register">
-                <div
+                <button
                     class="hidden rounded-md bg-black border-black border-2 px-5 py-2.5 text-sm font-medium text-white transition hover:text-teal-600/75 sm:block"
 
                 >
                     Sign Up
-                </div>
+                </button>
             </Link>
         </div>;
 
@@ -64,12 +64,12 @@ const Header = ({ user, setUser, setToken, token }) => {
 
             <header aria-label="Site Header" class="bg-white">
                 <div
-                    class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8"
+                    class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 px-6 lg:px-8"
                 >
 
-                    <a class="block text-teal-600">
+                    <button class="block text-teal-600">
                         <Link to="/"><img class="h-12" src="https://i.ibb.co/2YYrkKd/LL-2-copy.png"></img></Link>
-                    </a>
+                    </button>
 
 
                     <div class="flex flex-1 items-center justify-end md:justify-between">
@@ -92,9 +92,9 @@ const Header = ({ user, setUser, setToken, token }) => {
 
 
                         <div class="flex items-center gap-4">
-                            <div class="sm:flex sm:gap-4">
+                            
                                 {logInSingUpLogOutButtons}
-                            </div>
+                        
 
                             <button
                                 class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
