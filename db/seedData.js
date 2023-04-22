@@ -1,4 +1,4 @@
-const { client } = require('./');
+const { client } = require('.');
 const { createUser } = require('./users');
 const { createResident_Card } = require('./resident_card');
 

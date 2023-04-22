@@ -1,6 +1,6 @@
-export const APIURL = `http://localhost:4000/api`;
+const APIURL = `http://localhost:4000/api`;
 
-export async function getAllResident_Cards() {
+async function getAllResident_Cards() {
 
     try {
         const res = await fetch(`${APIURL}/resident_card`);
@@ -11,7 +11,18 @@ export async function getAllResident_Cards() {
     }
 }
 
-export async function createResident_Card(
+async function getResidentCardsById(id) {
+
+    try {
+        const res = await fetch(`${APIURL}/resident_card/${id}`);
+        const json = await res.json();
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function createResident_Card(
     name,
     apartment,
     move_in_date,
@@ -58,7 +69,7 @@ export async function createResident_Card(
     }
 }
 
-export async function deleteResident_Card(id) {
+async function deleteResident_Card(id) {
 
     try {
         const res = await fetch(`${APIURL}/resident_card/${id}`, {
@@ -74,7 +85,7 @@ export async function deleteResident_Card(id) {
     }
 }
 
-export async function editResidentCard(
+async function editResidentCard(
     id,
     name,
     apartment,
@@ -124,7 +135,7 @@ export async function editResidentCard(
     }
 }
 
-export const register = async (username, password) => {
+const register = async (username, password) => {
 
     const res = await fetch(`${APIURL}/users/register`, {
         method: 'POST',
@@ -141,7 +152,7 @@ export const register = async (username, password) => {
     return json;
 };
 
-export const login = async (username, password) => {
+const login = async (username, password) => {
     const res = await fetch(`${APIURL}/users/login`, {
         method: 'POST',
         headers: {
@@ -158,28 +169,213 @@ export const login = async (username, password) => {
 
 // updates
 
-export async function updateApprovalDocs(
+async function updateApprovalDocs(
     id,
     sent_approval_docs
-  ) {
-    console.log({id, sent_approval_docs})
+) {
     try {
-  
-      const res = await fetch(`${APIURL}/resident_card/${id}/approvaldocs`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            sent_approval_docs: sent_approval_docs,
-        }),
-      });
-  
-      const json = res.json();
-    
-      return json;
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
+        const res = await fetch(`${APIURL}/resident_card/${id}/approvaldocs`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                sent_approval_docs: sent_approval_docs,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function updateSentLease(
+    id,
+    sent_lease
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/leasesent`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                sent_lease: sent_lease,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function updateReceivedElectric(
+    id,
+    received_electric
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/receivedelectric`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                received_electric: received_electric,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+async function updateReceivedInsurance(
+    id,
+    received_insurance
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/receivedinsurance`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                received_insurance: received_insurance,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function updateReceivedSignedLease(
+    id,
+    received_signed_lease
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/receivedsignedlease`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                received_signed_lease: received_signed_lease,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function updateReceivedPayment(
+    id,
+    received_payment
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/receivedpayment`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                received_payment: received_payment,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function updateNotes(
+    id,
+    notes
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/notes`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                notes: notes,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function updateMovedIn(
+    id,
+    moved_in
+) {
+    try {
+
+        const res = await fetch(`${APIURL}/resident_card/${id}/movedin`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                moved_in: moved_in,
+            }),
+        });
+
+        const json = res.json();
+
+        return json;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+module.exports = {
+    login,
+    register,
+    getResidentCardsById,
+    editResidentCard,
+    createResident_Card,
+    getAllResident_Cards,
+    deleteResident_Card,
+    updateApprovalDocs,
+    updateSentLease,
+    updateReceivedElectric,
+    updateReceivedInsurance,
+    updateReceivedSignedLease,
+    updateReceivedPayment,
+    updateNotes,
+    updateMovedIn
+};

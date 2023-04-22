@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { editResidentCard, getAllResident_Cards } from "../api"
+import { editResidentCard, getAllResident_Cards } from "../api/index.js"
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { current } from "tailwindcss/colors";

@@ -134,7 +134,146 @@ async function updateApprovalDocs({
     return resident_card;
 }
 
+async function updateSentLease({
+    id,
+    sent_lease
+}) {
 
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET sent_lease=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [sent_lease]
+    );
+
+    return resident_card;
+}
+
+
+async function updateReceivedElectric({
+    id,
+    received_electric
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET received_electric=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [received_electric]
+    );
+
+    return resident_card;
+}
+
+async function updateReceivedInsurance({
+    id,
+    received_insurance
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET received_insurance=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [received_insurance]
+    );
+
+    return resident_card;
+}
+
+async function updateReceivedSignedLease({
+    id,
+    received_signed_lease
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET received_signed_lease=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [received_signed_lease]
+    );
+
+    return resident_card;
+}
+
+async function updateReceivedPayment({
+    id,
+    received_payment
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET received_payment=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [received_payment]
+    );
+
+    return resident_card;
+}
+
+async function updateNotes({
+    id,
+    notes
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET notes=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [notes]
+    );
+
+    return resident_card;
+}
+
+async function updateMovedIn({
+    id,
+    moved_in
+}) {
+
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+      UPDATE resident_card
+      SET moved_in=$1
+      WHERE id=${id}
+      RETURNING *;
+    `,
+        [moved_in]
+    );
+
+    return resident_card;
+}
 
 async function deleteResident_Card(id) {
     const {
@@ -158,5 +297,12 @@ module.exports = {
     getResident_CardByName,
     updateResident_Card,
     deleteResident_Card,
-    updateApprovalDocs
+    updateApprovalDocs,
+    updateSentLease,
+    updateReceivedElectric,
+    updateReceivedInsurance,
+    updateReceivedSignedLease,
+    updateReceivedPayment,
+    updateNotes,
+    updateMovedIn
 };

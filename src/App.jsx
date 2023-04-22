@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Link, Route, Routes, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login, Register, Header, Footer, Upcoming_moves, Past_moves, Home, Profile, Resident_form, Resident_card } from './components/index';
 
 function App() {
