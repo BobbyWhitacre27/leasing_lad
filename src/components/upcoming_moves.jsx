@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Link, Route, Routes, Switch, useNavigate } from "react-router-dom";
-import DatePicker from 'react-datepicker';
+import { Link } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import {
     getAllResident_Cards,
@@ -18,6 +17,9 @@ import {
 } from '../api/index';
 
 const Upcoming_moves = ({ user }) => {
+
+    // useStates
+
     const [resident_cards, setResident_Cards] = useState([]);
     const [resident_cardsById, setResident_CardsById] = useState([]);
     const [select, setSelect] = useState(false);
@@ -37,7 +39,7 @@ const Upcoming_moves = ({ user }) => {
 
 
 
-
+    // Handle functions
 
 
     const handleApprovalDocsSent = async (id) => {
@@ -54,7 +56,7 @@ const Upcoming_moves = ({ user }) => {
             await updateSentLease(id, true)
             return setLeaseSent(true)
         }
-        await updateSentLease(false)
+        await updateSentLease(id, false)
         setLeaseSent(false)
     }
 
@@ -147,8 +149,7 @@ const Upcoming_moves = ({ user }) => {
         setIsDeleteCard(false)
     }
 
-
-
+    // Variables for calculations
 
     const userFilter = resident_cards.filter((u) => user.id === u.user_id)
 
@@ -157,8 +158,7 @@ const Upcoming_moves = ({ user }) => {
     const sortByDate = notMovedInFilter.sort((a, b) => new Date(a.move_in_date) - new Date(b.move_in_date))
 
 
-
-
+    // Resident Card Display
 
     const residentCard = sortByDate.map((c) => {
 
@@ -171,38 +171,42 @@ const Upcoming_moves = ({ user }) => {
         const insuranceSetUp = c.received_insurance;
         const leaseSigned = c.received_signed_lease;
         const paymentMade = c.received_payment;
-        const movedIn = c.moved_in;
 
+        const totalTasks = [approvalDocs, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade]
 
+        const numberOfTrue = (arry) => {
+            var total = 0
+            for(let i=0; i < arry.length; i++){
+                const task = arry[i]
+                if(task === true){
+                   total += 1
+                }
+            }
+            return total
+        }
+
+        const numberOfTasksComplete = numberOfTrue(totalTasks)
+
+        const fraction = numberOfTasksComplete/(totalTasks.length)
+
+        const percentange = fraction * 100
+
+        const percentageNoDecimal = Math.trunc(percentange)
+
+        const badColorPercentage = percentageNoDecimal < 30 ? <td class="whitespace-nowrap font-bold pb-4 px-4 text-red-600">{percentageNoDecimal}%</td> : <td class="whitespace-nowrap font-bold pb-4 px-4 text-orange-400">{percentageNoDecimal}%</td>
+
+        const colorPercentage = percentageNoDecimal < 100 ? badColorPercentage : <td class="whitespace-nowrap font-bold pb-4 px-4 text-green-600">{percentageNoDecimal}%</td>
+    
 
         const checked = "data:image/png;base64,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"
 
-        // const calclulatePercentComplete = (approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade) => {
-        //     const total = 0
-        //     if(approvalDocsSent == "true"){
-        //         total += 1
-        //     }if(leaseSent == "true"){
-        //         total += 1
-        //     }if(electricSetUp == "true"){
-        //         total += 1
-        //     }if(insuranceSetUp == "true"){
-        //         total +=1
-        //     }if(leaseSigned == "true"){
-        //         total +=1
-        //     }if(paymentMade == "true"){
-        //         total +=1
-        //     }
-        //     const fraction = total / 6 
-        //     const answer = fraction.toFixed(2) + "%"
-        //     return answer
-        // }
-
+        // Editable form
 
         const editForm = (<div>
             <section class="mb-8 mt-8">
                 <div class="w-3/4 m-auto">
                     <div class="rounded-lg mt-8 bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                        <div class="flexn">
+                        <div class="flex">
                             <div>
                                 <h1 class="flex text-black text-3xl font-bold">{c.name}{ }</h1>
                                 <h1 class="flex text-black text-md font-bold">APT #{c.apartment} { }</h1>
@@ -212,7 +216,10 @@ const Upcoming_moves = ({ user }) => {
 
                             </div>
 
+                            
+
                         </div>
+                
                         <h1 class="font-bold text-red-600 mb-2"></h1>
                         <div action="" class="space-y-4">
 
@@ -274,16 +281,17 @@ const Upcoming_moves = ({ user }) => {
             </section>
         </div>)
 
-
+        // Unclicked Resident Card
 
         const residentCards = (<div class="mb-4 mt-4">
             <div class="overflow-x-auto border-2 rounded-xl">
                 <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
                     <tbody class=" divide-y divide-gray-200">
-                        <tr class="grid grid-cols-4 pt-8 lg:text-xl sm:text-sm  pb-2">
+                        <tr class="grid grid-cols-5 pt-8 lg:text-xl sm:text-sm  pb-2">
                             <td class="whitespace-nowrap px-4 font-bold text-gray-700">{c.name}</td>
                             <td class="whitespace-nowrap pb-4 px-4 text-gray-900">#{c.apartment}</td>
                             <td class="whitespace-nowrap px-4  text-gray-700">{newDate}</td>
+                            {colorPercentage}
                             <td class="whitespace-nowrap px-4 ">
                                 {select === true & selectedId === c.id ?
                                     <button
@@ -344,10 +352,11 @@ const Upcoming_moves = ({ user }) => {
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
                             <tbody class="border-b-4 border-black">
-                                <tr class="grid grid-cols-4 lg:text-2xl sm:text-sm font-bold">
+                                <tr class="grid grid-cols-5 lg:text-2xl sm:text-sm font-bold">
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700">Name</td>
                                     <td class="whitespace-nowrap px-4 py-2  text-black">Apartment</td>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700">Move-in</td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">% Complete</td>
                                     <td class="whitespace-nowrap px-4 py-2 hidden">Select</td>
                                 </tr>
 

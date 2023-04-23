@@ -136,7 +136,6 @@ async function updateSentLease({
     id,
     sent_lease
 }) {
-
     const {
         rows: [resident_card],
     } = await client.query(
