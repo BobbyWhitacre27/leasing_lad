@@ -225,7 +225,7 @@ const Resident_form = ({ user }) => {
 
                                 <div class="grid justify-start text-left mt-4">
                                     <h1 class="font-bold text-xl">Leasing Agent Tasks:</h1>
-                                    <button class="flex h-8 mt-4" onClick={() => handleApprovalDocsSent()}><div>{approvalDocsSent === false ? "" : <img class="h-5 pr-2" src={checked} />}</div><h1>Reservation Agreement & Approval Letter Sent?</h1></button>
+                                    <button class="flex text-left h-8 mt-4" onClick={() => handleApprovalDocsSent()}><div>{approvalDocsSent === false ? "" : <img class="h-5 pr-2" src={checked} />}</div><h1>Approval Documents Sent?</h1></button>
                                     <button class="flex h-8 mt-2" onClick={() => handleLeaseSent()}><div>{leaseSent === false ? "" : <img class="h-5 pr-2" src={checked} />}</div><h1>Lease Sent?</h1></button>
 
                                 </div>
