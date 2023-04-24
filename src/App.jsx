@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Login, Register, Header, Footer, Upcoming_moves, Past_moves, Home, Profile, Resident_form, Resident_card } from './components/index';
+import { Login, Register, Header, Footer, Upcoming_moves, Past_moves, Home, Profile, Resident_form } from './components/index';
 
 function App() {
   const [token, setToken] = useState("");
@@ -20,7 +20,6 @@ function App() {
           <Route path="/Profile" element={<Profile user={user} />} />
           <Route path="/Resident_form" element={<Resident_form user={user} />} />
           <Route path="/Resident_form" element={<Resident_form user={user} />} />
-          <Route path="/Resident_card" element={<Resident_card user={user} />} />
         </Routes>
         <footer><Footer></Footer></footer>
       </BrowserRouter>

@@ -14,7 +14,7 @@ const Home = () => {
                     </div>
 
                     <div>
-                        <div class="absolute flex-wrap inset-x-0 top-2 mt-8  justify-center content-center text-center">
+                        <div class="absolute flex-wrap inset-x-0 top-2 mt-8 lg:top-10 md:top-10 sm:top-10 justify-center content-center text-center">
                             <h1 class="text-8xl font-bold text-white mt-14">Leasing Lad.</h1>
                             <p class="mt-4 text-white font-bold">
                                 A leasing agents best friend.
@@ -31,7 +31,7 @@ const Home = () => {
                                 Designed to Improve the Leasing Experience
                             </h2>
                             <p class="mt-4 text-gray-500 sm:text-xl">
-                                Working in real estate can be fast paced and easy to lose track of where you are with paperwork. Leasing Lad helps you keep track of your residents leasing paperwork.
+                                Working in real estate can be fast paced. It's easy to lose track of where you are with paperwork. Leasing Lad is here to help.
                             </p>
                         </div>
 
@@ -40,8 +40,8 @@ const Home = () => {
                                 <div
                                     class="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center"
                                 >
-                                    <dt class="order-last text-lg font-medium text-gray-500">
-                                        Reliable tracking so you are always prepared for clients.
+                                    <dt class="order-last text-lg font-medium mt-4 text-gray-500">
+                                        Reliable document tracking.
                                     </dt>
 
                                     <dd class="flex justify-center text-4xl font-extrabold text-black md:text-5xl">
@@ -52,8 +52,8 @@ const Home = () => {
                                 <div
                                     class="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center"
                                 >
-                                    <dt class="order-last text-lg font-medium text-gray-500">
-                                        Easier way to organize that gives you more time back. 
+                                    <dt class="order-last text-lg mt-4 font-medium text-gray-500">
+                                        Easier way to organize. 
                                     </dt>
 
                                     <dd class="flex justify-center text-4xl font-extrabold text-black md:text-5xl">
@@ -64,8 +64,8 @@ const Home = () => {
                                 <div
                                     class="flex flex-col rounded-lg border border-gray-100 px-4 py-8 text-center"
                                 >
-                                    <dt class="order-last text-lg font-medium text-gray-500">
-                                        Gives you the opportunity for more tours and more sales.
+                                    <dt class="order-last mt-4 text-lg font-medium text-gray-500">
+                                        More efficient process.
                                     </dt>
 
                                     <dd class="flex justify-center text-4xl font-extrabold text-black md:text-5xl">

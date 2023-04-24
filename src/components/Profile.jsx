@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllResident_Cards } from '../api/index.js';
 
 const Profile = ({ user }) => {
@@ -38,26 +38,54 @@ const Profile = ({ user }) => {
                     <div class="font-bold"><h1 class="lg:text-3xl md:text-3xl sm:text-md">Past Move-ins</h1><h2 class="text-8xl">{numberOfPastMoveIns}</h2></div>
                 </div>
 
-                <div class="lg:flex md:flex sm:flex-wrap justify-center sm:gap-4 mt-10 sm:py-4">
-                    <Link to="/Upcoming_moves">
-                        <button
-                            class="block rounded-md bg-white border-black border-2 py-2.5 text-sm font-medium text-black w-72"
 
-                        >
-                            Future Move-in's
-                        </button>
-                    </Link>
-                    <Link to="/Past_moves">
-                        <button
-                            class="block rounded-md bg-white border-black border-2 py-2.5 text-sm font-medium text-black w-72"
+                <div class="md:flex sm:flex-wrap justify-center mt-8">
+                    <div class="p-2">
+                        <Link class="flex justify-center" to="/Upcoming_moves">
+                            <button
+                                class="block rounded-md bg-white border-black border-2 py-2.5 text-sm font-medium text-black w-72"
 
-                        >
-                            Past Move-in's
-                        </button>
-                    </Link>
+                            >
+                                Future Move-in's
+                            </button>
+                        </Link>
+                    </div>
+                    <div class="p-2">
+                        <Link class="flex justify-center" to="/Past_moves">
+                            <button
+                                class="block rounded-md bg-white border-black border-2 py-2.5 text-sm font-medium text-black w-72"
+
+                            >
+                                Past Move-in's
+                            </button>
+                        </Link>
+                    </div>
                 </div>
-                <h1 class="text-black text-2xl font-bold mt-8">Go get some leases!</h1>
             </div>
+            <h1 class="text-black text-2xl font-bold mt-8">Additional Resources:</h1>
+            <div class="p-4">
+                <a
+                    class="rounded-md bg-black border-black border-2 mt-6 py-2 px-8 text-sm font-medium text-white w-72"
+                    target="_blank"
+                    href="https://prorationcalculator.netlify.app/"
+                >
+                    Rent Proration Calculator
+                </a>
+            </div>
+            <div class="p-2">
+                <a
+                    class="rounded-md bg-black border-black border-2 mt-6 py-2 px-8 text-sm font-medium text-white w-72"
+                    target="_blank"
+                    href="https://rent-specials-calculator.netlify.app/"
+                >
+                    Rent Specials Calculator
+                </a>
+            </div>
+
+
+
+            <h1 class="text-black text-2xl font-bold mt-8">Go get some leases!</h1>
+
         </section>
     )
 }

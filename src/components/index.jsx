@@ -7,4 +7,3 @@ export { default as Upcoming_moves } from './Upcoming_moves'
 export { default as Past_moves } from './Past_moves';
 export { default as Profile } from './Profile';
 export { default as Resident_form } from './Resident_form';
-export { default as Resident_card } from './Resident_card';

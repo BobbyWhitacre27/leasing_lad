@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Login, Register, Footer, Upcoming_moves, Past_moves, Home } from './index';
 
 const Header = ({ user, setUser, setToken, token }) => {
+    const [isNavOpen, setIsNavOpen] = useState(false);
     const navigate = useNavigate();
 
     const logout = () => {
@@ -92,12 +92,13 @@ const Header = ({ user, setUser, setToken, token }) => {
 
 
                         <div class="flex items-center gap-4">
-                            
-                                {logInSingUpLogOutButtons}
-                        
+
+                            {logInSingUpLogOutButtons}
+
 
                             <button
                                 class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
+                                onClick={() => setIsNavOpen(true)}
                             >
                                 <span class="sr-only">Toggle menu</span>
                                 <svg
@@ -116,6 +117,21 @@ const Header = ({ user, setUser, setToken, token }) => {
                                 </svg>
                             </button>
                         </div>
+
+                        {isNavOpen === true ?
+                        <div class="absolute bg-black text-left text-xl md:hidden z-10 top-0 right-0 w-3/4 rounded-2xl text-white underline p-4">
+                            <div 
+                            onClick={() => setIsNavOpen(false)} 
+                            class="flex justify-end">
+                                <img class="h-6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/High-contrast-dialog-close.svg/768px-High-contrast-dialog-close.svg.png"></img>
+                            </div>
+                            {token !== "" ? "" :<div class="py-2"><Link to="/Register">Sign Up</Link></div>}
+                            {token !== "" ? <div>
+                            <div class="py-2"><Link to="/Profile">Profile</Link></div>
+                            <div class="py-2"><Link to="/Upcoming_moves">Future Move-in's</Link></div>
+                            <div class="py-2 mb-4"><Link to="/Past_moves">Past Move-in's</Link></div></div> : ""}
+                        </div> : ""}
+
                     </div>
                 </div>
             </header>

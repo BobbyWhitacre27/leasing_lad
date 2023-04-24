@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register, login } from "../api/index.js"
 
@@ -99,14 +99,14 @@ const Register = ({setUser, setToken}) => {
                     </div>
 
                     <div class="flex items-center justify-between">
-                        <p class="text-sm text-gray-500">
+                        <p class="text-sm text-gray-500 w-1/2">
                             <>Already have an account? </>
                             <Link class="underline" to="/Login">Log in</Link>
                         </p>
 
                         <button
                             type="submit"
-                            class="inline-block rounded-lg bg-black px-5 py-3 text-sm font-medium text-white"
+                            class="inline-block rounded-lg bg-black px-5 py-3 text-sm  font-medium text-white"
                         >
                             Sign Up
                         </button>

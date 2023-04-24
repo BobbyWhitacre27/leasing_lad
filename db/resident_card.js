@@ -51,6 +51,18 @@ async function getResident_CardById(id) {
     return resident_card;
 }
 
+async function getResident_CardByUserId(id) {
+    const {
+        rows: [resident_card],
+    } = await client.query(
+        `
+    SELECT * FROM resident_card
+    WHERE "user_id"=${id};
+  `);
+
+    return resident_card;
+}
+
 async function getResident_CardByName(name) {
     const {
         rows: [resident_card],
@@ -301,5 +313,6 @@ module.exports = {
     updateReceivedSignedLease,
     updateReceivedPayment,
     updateNotes,
-    updateMovedIn
+    updateMovedIn,
+    getResident_CardByUserId
 };

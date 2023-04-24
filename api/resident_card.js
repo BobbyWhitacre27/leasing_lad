@@ -14,9 +14,9 @@ const {
     updateReceivedSignedLease,
     updateReceivedPayment,
     updateNotes,
-    updateMovedIn
+    updateMovedIn,
+    getResident_CardByUserId
 } = require('../db/resident_card');
-const { getResidentCardsById } = require('../src/api/index.js');
 
 
 // Get all cards
@@ -36,6 +36,19 @@ apiRouter.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const resident_card = await getResident_CardById(id)
+
+        res.send(
+            resident_card
+        )
+    } catch (error) {
+        next(error)
+    }
+});
+
+apiRouter.get('/user/:user_id', async (req, res, next) => {
+    try {
+        const id = req.params.user_id;
+        const resident_card = await getResident_CardByUserId(id)
 
         res.send(
             resident_card
