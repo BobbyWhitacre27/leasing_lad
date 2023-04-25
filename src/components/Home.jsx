@@ -11,7 +11,7 @@ const Home = () => {
                 <div>
 
                     <div class="">
-                        <video src={leasingLad_video} autoPlay loop muted plays-inline class="brightness-50 object-cover h-72 w-full" />
+                        <video src={leasingLad_video} autoPlay playsInline loop muted plays-inline class="brightness-50 object-cover h-72 w-full" />
                     </div>
 
                     <div>
@@ -82,7 +82,7 @@ const Home = () => {
                     How Leasing Lad Works?
                 </h2>
                 <div class="flex justify-center m-8">
-                    <video src={leasingLadDemo} autoPlay loop muted plays-inline class="object-cover rounded-2xl border-2 border-black sm:w-1/2" />
+                    <video src={leasingLadDemo} autoPlay playsInline loop muted plays-inline class="object-cover rounded-2xl border-2 border-black sm:w-1/2" />
                 </div>
                 <h2 class="text-2xl font-bold text-gray-900  mb-8">
                     <ul>
