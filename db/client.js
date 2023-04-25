@@ -4,7 +4,7 @@ const { Client } = require('pg');
 const DB_NAME = 'leasing_lad-dev';
 
 const DB_URL =
-  process.env.DATABASE_URL || `postgresql://postgres:YR0gt25D7fzaizoWaPEe@containers-us-west-153.railway.app:6484/railway`;
+  process.env.DATABASE_URL;
 
 let client;
 
