@@ -362,20 +362,20 @@ export async function updateMovedIn(
 }
 
 
-module.exports = {
-    login,
-    register,
-    editResidentCard,
-    createResident_Card,
-    getAllResident_Cards,
-    getResidentCardsByUserId,
-    deleteResident_Card,
-    updateApprovalDocs,
-    updateSentLease,
-    updateReceivedElectric,
-    updateReceivedInsurance,
-    updateReceivedSignedLease,
-    updateReceivedPayment,
-    updateNotes,
-    updateMovedIn
-};
+// module.exports = {
+//     login,
+//     register,
+//     editResidentCard,
+//     createResident_Card,
+//     getAllResident_Cards,
+//     getResidentCardsByUserId,
+//     deleteResident_Card,
+//     updateApprovalDocs,
+//     updateSentLease,
+//     updateReceivedElectric,
+//     updateReceivedInsurance,
+//     updateReceivedSignedLease,
+//     updateReceivedPayment,
+//     updateNotes,
+//     updateMovedIn
+// };
