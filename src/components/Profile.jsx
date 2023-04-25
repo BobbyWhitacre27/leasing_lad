@@ -11,6 +11,7 @@ const Profile = ({ user }) => {
         const cards = await getAllResident_Cards();
         setResident_Cards(cards)
     }
+    
 
     useEffect(() => {
         cards()
