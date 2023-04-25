@@ -2,15 +2,15 @@ import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import { Login, Register, Header, Footer, Upcoming_moves, Past_moves, Home, Profile, Resident_form } from './components/index';
-import  Header from './components/header.jsx'
- import Login from './components/login.jsx'
- import Register from './components/register.jsx' 
- import Footer from './components/footer.jsx' 
- import Upcoming_moves from './components/upcoming_moves.jsx'
- import Past_moves from './components/past_moves.jsx'
- import Home from './components/home.jsx'
- import Profile from './components/profile.jsx'
- import Resident_form from './components/resident_form.jsx';
+import  Header from './components/Header.jsx'
+ import Login from './components/Login.jsx'
+ import Register from './components/Register.jsx' 
+ import Footer from './components/Footer.jsx' 
+ import Upcoming_moves from './components/Upcoming_moves.jsx'
+ import Past_moves from './components/Past_moves.jsx'
+ import Home from './components/Home.jsx'
+ import Profile from './components/Profile.jsx'
+ import Resident_form from './components/Resident_form.jsx';
 
 
 function App() {
