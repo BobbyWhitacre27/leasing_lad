@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import leasingLad_video from "../video/leasingLad_video.mov"
-import leasingLadDemo from "../video/leasingLadDemo2.mov"
+import leasingLadDemo from "../video/LeasingLadGifVideo.mov"
 
 const Home = () => {
 
@@ -82,18 +82,17 @@ const Home = () => {
                     How Leasing Lad Works?
                 </h2>
                 <div class="flex justify-center m-8">
-                    <video src={leasingLadDemo} autoPlay loop muted plays-inline class="object-cover sm:w-1/2" />
+                    <video src={leasingLadDemo} autoPlay loop muted plays-inline class="object-cover rounded-2xl border-2 border-black sm:w-1/2" />
                 </div>
-                <h2 class="text-xl text-gray-900  mb-8">
+                <h2 class="text-2xl font-bold text-gray-900  mb-8">
                     <ul>
-                        <li>1. Create an account</li>
-                        <li>2. Add new residents to your folders</li>
-                        <li>3. Update your paper work status</li>
-                        <li>4. Be organized 😎 </li>
-                        
+                        <li class="mb-2">Create an account</li>
+                        <li class="mb-2">Add new residents</li>
+                        <li class="mb-2">Update your paperwork status</li>
+                        <li class="mb-2">Be organized 😎 </li>
                     </ul>
                     <h2 class="text-xl font-bold text-gray-900 mt-4">
-                       ** Bonus: Rent Prorator and Rent Specials Calculator incluced **
+                       ** Bonus: Rent Prorator and Rent Specials Calculator included **
                 </h2>
                 
                 </h2>
