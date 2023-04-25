@@ -1,4 +1,6 @@
-export const APIURL = `http://localhost:4000/api`;
+// export const APIURL = `http://localhost:4000/api`;
+
+export const APIURL = 'https://leasinglad-8757f-default-rtdb.firebaseio.com/api' 
 
 export async function getAllResident_Cards() {
 
