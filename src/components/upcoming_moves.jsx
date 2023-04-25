@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import {
     getAllResident_Cards,
-    getResidentCardsById,
     deleteResident_Card,
     updateApprovalDocs,
     updateSentLease,
@@ -126,10 +125,10 @@ const Upcoming_moves = ({ user }) => {
 
     const userId = user.id
 
-    const cardsById = async () => {
-        const cards = await getResidentCardsById(userId);
-        setResident_CardsById(cards)
-    }
+    // const cardsById = async () => {
+    //     const cards = await getResidentCardsById(userId);
+    //     setResident_CardsById(cards)
+    // }
 
 
     const handleSelect = (id) => {
@@ -335,7 +334,7 @@ const Upcoming_moves = ({ user }) => {
 
     useEffect(() => {
         cards()
-        cardsById()
+        // cardsById()
     }, [isDeleteCard, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, movedIn, isUpdateNotes])
 
 

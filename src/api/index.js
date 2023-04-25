@@ -1,6 +1,6 @@
-const APIURL = `http://localhost:4000/api`;
+export const APIURL = `http://localhost:4000/api`;
 
-async function getAllResident_Cards() {
+export async function getAllResident_Cards() {
 
     try {
         const res = await fetch(`${APIURL}/resident_card`);
@@ -11,7 +11,7 @@ async function getAllResident_Cards() {
     }
 }
 
-async function getResidentCardsByUserId(id) {
+export async function getResidentCardsByUserId(id) {
 
     try {
         const res = await fetch(`${APIURL}/resident_card/user/${id}`);
@@ -22,7 +22,7 @@ async function getResidentCardsByUserId(id) {
     }
 }
 
-async function createResident_Card(
+export async function createResident_Card(
     name,
     apartment,
     move_in_date,
@@ -68,7 +68,7 @@ async function createResident_Card(
     }
 }
 
-async function deleteResident_Card(id) {
+export async function deleteResident_Card(id) {
 
     try {
         const res = await fetch(`${APIURL}/resident_card/${id}`, {
@@ -84,7 +84,7 @@ async function deleteResident_Card(id) {
     }
 }
 
-async function editResidentCard(
+export async function editResidentCard(
     id,
     name,
     apartment,
@@ -134,7 +134,7 @@ async function editResidentCard(
     }
 }
 
-const register = async (username, password) => {
+export const register = async (username, password) => {
 
     const res = await fetch(`${APIURL}/users/register`, {
         method: 'POST',
@@ -151,7 +151,7 @@ const register = async (username, password) => {
     return json;
 };
 
-const login = async (username, password) => {
+export const login = async (username, password) => {
     const res = await fetch(`${APIURL}/users/login`, {
         method: 'POST',
         headers: {
@@ -168,7 +168,7 @@ const login = async (username, password) => {
 
 // updates
 
-async function updateApprovalDocs(
+export async function updateApprovalDocs(
     id,
     sent_approval_docs
 ) {
@@ -192,7 +192,7 @@ async function updateApprovalDocs(
     }
 }
 
-async function updateSentLease(
+export async function updateSentLease(
     id,
     sent_lease
 ) {
@@ -216,7 +216,7 @@ async function updateSentLease(
     }
 }
 
-async function updateReceivedElectric(
+export async function updateReceivedElectric(
     id,
     received_electric
 ) {
@@ -241,7 +241,7 @@ async function updateReceivedElectric(
 }
 
 
-async function updateReceivedInsurance(
+export async function updateReceivedInsurance(
     id,
     received_insurance
 ) {
@@ -265,7 +265,7 @@ async function updateReceivedInsurance(
     }
 }
 
-async function updateReceivedSignedLease(
+export async function updateReceivedSignedLease(
     id,
     received_signed_lease
 ) {
@@ -289,7 +289,7 @@ async function updateReceivedSignedLease(
     }
 }
 
-async function updateReceivedPayment(
+export async function updateReceivedPayment(
     id,
     received_payment
 ) {
@@ -313,7 +313,7 @@ async function updateReceivedPayment(
     }
 }
 
-async function updateNotes(
+export async function updateNotes(
     id,
     notes
 ) {
@@ -337,7 +337,7 @@ async function updateNotes(
     }
 }
 
-async function updateMovedIn(
+export async function updateMovedIn(
     id,
     moved_in
 ) {
