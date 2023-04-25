@@ -286,3 +286,4 @@ const Resident_form = ({ user }) => {
 }
 
 export default Resident_form; 
+

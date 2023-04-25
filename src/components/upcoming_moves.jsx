@@ -392,3 +392,4 @@ const Upcoming_moves = ({ user }) => {
 }
 
 export default Upcoming_moves; 
+

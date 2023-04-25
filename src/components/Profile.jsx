@@ -14,7 +14,7 @@ const Profile = ({ user }) => {
 
 
 
-    
+
     useEffect(() => {
         cards()
     }, [])

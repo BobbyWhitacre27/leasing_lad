@@ -378,3 +378,4 @@ const Past_moves = ({ user }) => {
 }
 
 export default Past_moves; 
+
