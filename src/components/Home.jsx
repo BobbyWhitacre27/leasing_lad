@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import leasingLad_video from "../video/leasingLad_video.mov"
 import leasingLadDemo from "../video/LeasingLadGifVideo.mov"
 
+
+
+
 const Home = () => {
+
 
     return (
         <section>

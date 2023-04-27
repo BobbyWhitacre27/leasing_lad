@@ -164,7 +164,7 @@ const Past_moves = ({ user }) => {
 
         const searchResult = nameLowercase.includes(search.toLocaleLowerCase())
 
-        const date = new Date(c.move_in_date)
+        const date = new Date(c.move_in_date.replace(/-/g, '\/').replace(/T.+/, ''))
         const newDate = date.toLocaleDateString('en-US');
 
         const approvalDocs = c.sent_approval_docs;
