@@ -88,18 +88,20 @@ const Home = () => {
                 <div class="flex justify-center m-8">
                     <video src={leasingLadDemo} autoPlay playsInline loop muted plays-inline class="object-cover rounded-2xl border-2 border-black sm:w-1/2" />
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900  mb-8">
+                <h2 class="text-2xl font-bold text-gray-600 italic m-auto mb-8">
                     <ul>
-                        <li class="mb-2">Create an account</li>
-                        <li class="mb-2">Add new residents</li>
-                        <li class="mb-2">Update your paperwork status</li>
-                        <li class="mb-2">Be organized 😎 </li>
+                        <li class="mb-2">Steps to getting started:</li>
+                        <li class="mb-2">1. Create an account</li>
+                        <li class="mb-2">2. Add new residents</li>
+                        <li class="mb-2">3. Log your paperwork status</li>
+                        <li class="mb-2">4. Be organized <span class="not-italic">😎</span> </li>
                     </ul>
-                    <h2 class="text-xl font-bold text-gray-900 mt-4">
-                       ** Bonus: Rent Prorator and Rent Specials Calculator included **
+                    </h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-8">
+                       ** Bonus: <span><a href="https://prorationcalculator.netlify.app/" target="_blank" class="underline italic">Rent Proration</a></span> and <span><a href="https://rent-specials-calculator.netlify.app/" target="_blank" class="underline italic">Rent Specials</a></span> Calculators included **
                 </h2>
                 
-                </h2>
+             
             </section>
         </section>
     )

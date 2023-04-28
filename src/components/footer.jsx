@@ -56,7 +56,7 @@ const Footer = () => {
                     </div>
 
                     <p class="mx-auto mt-6 max-w-md text-center leading-relaxed text-white">
-                        Created by Bobby Whitacre.
+                        Created by Bobby Whitacre. <span><a href="https://www.youtube.com/watch?v=Nwsp7YmKuJM" target="_blank">YouTube Demo.</a></span>
                     </p>
 
 
