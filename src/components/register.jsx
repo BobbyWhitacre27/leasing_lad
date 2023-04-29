@@ -13,11 +13,12 @@ const Register = ({setUser, setToken}) => {
         event.preventDefault();
 
         try {
-          const signUp = await register(username, password);
+
           if(password !== confirmPassword){
             setMessage("Passwords do not match!")
             return
           }
+          const signUp = await register(username, password);
           if (signUp.error) {
             setMessage(signUp.message);
             return;
