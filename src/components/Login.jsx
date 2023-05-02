@@ -24,7 +24,7 @@ const Login = ({ setToken, setUser }) => {
                     setMessage("Please check username or password")
                     return
                 }
-                setMessage(logIn.message);
+                setMessage("Please check username and password");
             } else {
                 setMessage(logIn.message)
                 setToken(logIn.token);

@@ -98,7 +98,7 @@ const Home = () => {
                     </ul>
                     </h2>
                     <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-8">
-                       ** Bonus: <span><a href="https://prorationcalculator.netlify.app/" target="_blank" class="underline italic">Rent Proration</a></span> and <span><a href="https://rent-specials-calculator.netlify.app/" target="_blank" class="underline italic">Rent Specials</a></span> Calculators included **
+                       ** Bonus: <span><a href="https://prorationcalculator.netlify.app/" target="_blank" class="underline italic transition hover:text-gray-700/75">Rent Proration</a></span> and <span><a href="https://rent-specials-calculator.netlify.app/" target="_blank" class="underline italic transition hover:text-gray-700/75">Rent Specials</a></span> Calculators included **
                 </h2>
                 
              
