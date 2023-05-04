@@ -86,18 +86,24 @@ const Home = () => {
                     How Leasing Lad Works?
                 </h2>
                 <div class="flex justify-center m-8">
-                    <video src={leasingLadDemo} autoPlay playsInline loop muted plays-inline class="object-cover rounded-2xl border-2 border-black sm:w-1/2" />
+                    <video src={leasingLadDemo} autoPlay playsInline loop muted plays-inline class="object-cover rounded-2xl border-2 border-black lg:w-1/2" />
                 </div>
                 <h2 class="text-2xl font-bold text-gray-600 italic m-auto mb-8">
                     <ul>
                         <li class="mb-2">Steps to getting started:</li>
                         <li class="mb-2">1. Create an account</li>
                         <li class="mb-2">2. Add new residents</li>
-                        <li class="mb-2">3. Log your paperwork status</li>
-                        <li class="mb-2">4. Be organized <span class="not-italic">😎</span> </li>
+                        <li class="mb-2">3. Update guest cards</li>
+                        <li class="mb-2">4. Be organized <span class="not-italic">😎</span></li>
                     </ul>
-                    </h2>
-                    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-8">
+                </h2>
+                {/* <div class="grid lg:grid-cols-2 p-8 text-2xl font-bold text-gray-600 italic">
+                        <div class="mb-4">1. Create an account<img class="m-auto my-2 border-gray-200 border-1 rounded-xl w-3/4" src="https://i.ibb.co/k0ytMhL/Create-Account.png"></img></div>
+                        <div class="mb-4">2. Add new residents<img class="m-auto my-2 border-gray-200 border-1 rounded-xl w-3/4" src="https://i.ibb.co/cFq4SKK/Add-Resident.png"></img></div>
+                        <div class="mb-4">3. Update guest cards<img class="m-auto my-2 border-gray-200 border-1 rounded-xl w-3/4 " src="https://i.ibb.co/dpDSjQJ/View-All-Cards.png"></img></div>
+                        <div class="mb-4">4. Be organized <span class="not-italic">😎</span><img class="m-auto my-2 border-gray-200 border-1 rounded-xl w-3/4 " src="https://i.ibb.co/1K7gWgy/Profie-Page.png"></img></div>
+                </div> */}
+                    <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-16">
                        ** Bonus: <span><a href="https://prorationcalculator.netlify.app/" target="_blank" class="underline italic transition hover:text-gray-700/75">Rent Proration</a></span> and <span><a href="https://rent-specials-calculator.netlify.app/" target="_blank" class="underline italic transition hover:text-gray-700/75">Rent Specials</a></span> Calculators included **
                 </h2>
                 

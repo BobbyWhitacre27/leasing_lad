@@ -336,7 +336,7 @@ const Past_moves = ({ user }) => {
 
 
     return (
-        <section class="mb-8 mt-8">
+        <section class="mb-24 mt-8">
             <div class="sm:w-3/4 m-auto">
                 <h1 class="text-black text-4xl sm:text-5xl font-bold">Past Move-in's</h1>
 
