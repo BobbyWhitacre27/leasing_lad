@@ -15,7 +15,7 @@ import {
 
 } from '../api/index';
 
-const Past_moves = ({ user }) => {
+const Past_moves = ({ user, setNumberFutureResidents, setNumberPastResidents }) => {
 
     // useStates
 
@@ -36,7 +36,7 @@ const Past_moves = ({ user }) => {
     const [isDeleteCard, setIsDeleteCard] = useState(false);
     const [isUpdateNotes, setIsUpdateNotes] = useState(false);
     const [search, setSearch] = useState('');
-
+	
     // Handle functions
 
 
@@ -333,6 +333,17 @@ const Past_moves = ({ user }) => {
         cards()
         cardsByUserId()
     }, [isDeleteCard, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, movedIn, isUpdateNotes, search])
+
+
+	const notMovedInFilter = userFilter.filter((u) => u.moved_in === false)
+
+    const numberOfFutreMoveIns = notMovedInFilter.length
+
+    const numberOfPastMoveIns = movedInFilter.length
+
+	setNumberFutureResidents(numberOfFutreMoveIns)
+
+	setNumberPastResidents(numberOfPastMoveIns)
 
 
     return (

@@ -16,18 +16,20 @@ import  Header from './components/Header.jsx'
 function App() {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
+  const [numberFutureResidents, setNumberFutureResidents] = useState(0)
+  const [numberPastResidents, setNumberPastResidents] = useState(0)
 
   return (
     <div className="App">
       <BrowserRouter>
-        <header><Header user={user} setUser={setUser} setToken={setToken} token={token}></Header></header>
+        <header><Header user={user} setUser={setUser} setToken={setToken} token={token} numberFutureResidents={numberFutureResidents} numberPastResidents={numberPastResidents}></Header></header>
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route path="/Login" element={<Login setToken={setToken} setUser={setUser}/>}  />
           <Route path="/Register" element={<Register setToken={setToken} setUser={setUser}/>} setToken={setToken} setUser={setUser} />
-          <Route path="/Upcoming_moves" element={<Upcoming_moves user={user}/>} />
-          <Route path="/Past_moves" element={<Past_moves user={user}/>} />
-          <Route path="/Profile" element={<Profile user={user} />} />
+          <Route path="/Upcoming_moves" element={<Upcoming_moves user={user} setNumberFutureResidents={setNumberFutureResidents} setNumberPastResidents={setNumberPastResidents}/>} />
+          <Route path="/Past_moves" element={<Past_moves user={user} setNumberFutureResidents={setNumberFutureResidents} setNumberPastResidents={setNumberPastResidents}/>} />
+          <Route path="/Profile" element={<Profile user={user} setNumberFutureResidents={setNumberFutureResidents} setNumberPastResidents={setNumberPastResidents}/>} />
           <Route path="/Resident_form" element={<Resident_form user={user} />} />
           <Route path="/Resident_form" element={<Resident_form user={user} />} />
         </Routes>

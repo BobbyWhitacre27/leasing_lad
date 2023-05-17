@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllResident_Cards } from '../api/index.js';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, setNumberFutureResidents, setNumberPastResidents }) => {
 
     const [resident_cards, setResident_Cards] = useState([]);
 
@@ -28,6 +28,10 @@ const Profile = ({ user }) => {
     const numberOfFutreMoveIns = notMovedInFilter.length
 
     const numberOfPastMoveIns = movedInFilter.length
+
+	setNumberFutureResidents(numberOfFutreMoveIns)
+
+	setNumberPastResidents(numberOfPastMoveIns)
 
     return (
         <section class="mb-8 mt-8">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ user, setUser, setToken, token }) => {
+const Header = ({ user, setUser, setToken, token, numberFutureResidents, numberPastResidents }) => {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -20,13 +20,13 @@ const Header = ({ user, setUser, setToken, token }) => {
 
     const futureMoveInsButton = token !== "" ?
         <Link class="text-gray-500 transition hover:text-gray-500/75" to="/Upcoming_moves">
-            Future Move-in's
+            Future Move-in's ({numberFutureResidents})
         </Link>
         : "";
 
     const pastMoveInsButton = token !== "" ?
         <Link class="text-gray-500 transition hover:text-gray-500/75" to="/Past_moves">
-            Past Move-in's
+            Past Move-in's ({numberPastResidents})
         </Link>
         : "";
 

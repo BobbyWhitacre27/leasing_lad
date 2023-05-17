@@ -15,7 +15,7 @@ import {
 
 } from '../api/index';
 
-const Upcoming_moves = ({ user }) => {
+const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents }) => {
 
     // useStates
 
@@ -338,6 +338,15 @@ const Upcoming_moves = ({ user }) => {
     }, [isDeleteCard, approvalDocsSent, leaseSent, electricSetUp, insuranceSetUp, leaseSigned, paymentMade, movedIn, isUpdateNotes])
 
 
+    const movedInFilter = userFilter.filter((u) => u.moved_in === true)
+
+    const numberOfFutreMoveIns = notMovedInFilter.length
+
+    const numberOfPastMoveIns = movedInFilter.length
+
+	setNumberFutureResidents(numberOfFutreMoveIns)
+
+	setNumberPastResidents(numberOfPastMoveIns)
 
     return (
         <section class="mb-24 mt-8">
