@@ -16,8 +16,8 @@ import  Header from './components/Header.jsx'
 function App() {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
-  const [numberFutureResidents, setNumberFutureResidents] = useState(0)
-  const [numberPastResidents, setNumberPastResidents] = useState(0)
+  const [numberFutureResidents, setNumberFutureResidents] = useState("")
+  const [numberPastResidents, setNumberPastResidents] = useState("")
 
   return (
     <div className="App">

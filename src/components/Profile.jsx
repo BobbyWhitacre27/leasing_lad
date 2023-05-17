@@ -37,7 +37,7 @@ const Profile = ({ user, setNumberFutureResidents, setNumberPastResidents }) => 
         <section class="mb-8 mt-8">
             <div class="w-3/4 m-auto">
                 <h1 class="text-black text-5xl font-bold">Profile</h1>
-                <h1 class="text-black text-2xl font-bold mt-4">Welcome Back "{user.username}"! 🎉</h1>
+                <h1 class="text-black text-sm sm:text-2xl font-bold mt-4">Welcome Back "{user.username}"! 🎉</h1>
                 <h1 class="text-xl mt-8">About your account:</h1>
                 <p>Username: {user.username}</p>
                 <div class="flex sm:flex-wrap justify-center gap-8 mt-8">
