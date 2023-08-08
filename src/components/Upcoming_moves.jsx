@@ -15,7 +15,7 @@ import {
 
 } from '../api/index';
 
-const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents }) => {
+const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents, setIsLoading }) => {
 
     // useStates
 
@@ -46,7 +46,9 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleApprovalDocsSent = async (id) => {
         if (approvalDocsSent === false) {
+			setIsLoading(true)
             await updateApprovalDocs(id, true)
+			setIsLoading(false)
             return setApprovalDocsSent(true)
         }
         await updateApprovalDocs(id, false)
@@ -55,7 +57,9 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleLeaseSent = async (id) => {
         if (leaseSent === false) {
+			setIsLoading(true)
             await updateSentLease(id, true)
+			setIsLoading(false)
             return setLeaseSent(true)
         }
         await updateSentLease(id, false)
@@ -64,7 +68,9 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleElectricSetUp = async (id) => {
         if (electricSetUp === false) {
+			setIsLoading(true)
             await updateReceivedElectric(id, true)
+			setIsLoading(false)
             return setElectricSetUp(true)
         }
         await updateReceivedElectric(id, false)
@@ -73,7 +79,9 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleInsuranceSetUp = async (id) => {
         if (insuranceSetUp === false) {
+			setIsLoading(true)
             await updateReceivedInsurance(id, true)
+			setIsLoading(false)
             return setInsuranceSetUp(true)
         }
         await updateReceivedInsurance(id, false)
@@ -82,7 +90,9 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleLeaseSigned = async (id) => {
         if (leaseSigned === false) {
+			setIsLoading(true)
             await updateReceivedSignedLease(id, true)
+			setIsLoading(false)
             return setLeaseSigned(true)
         }
         await updateReceivedSignedLease(id, false)
@@ -91,7 +101,9 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handlePaymentMade = async (id) => {
         if (paymentMade === false) {
+			setIsLoading(true)
             await updateReceivedPayment(id, true)
+			setIsLoading(false)
             return setPaymentMade(true)
         }
         await updateReceivedPayment(id, false)
@@ -104,14 +116,18 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleUpdateNotes = async (id, notes) => {
         setIsUpdateNotes(true)
+		setIsLoading(true)
         await updateNotes(id, notes)
         setIsUpdateNotes(false)
+		setIsLoading(false)
     }
 
     const handleMovedIn = async (id) => {
         alert("🥳 Congratulations on the new move-in!! This resident will be moved to the 'Past Move-in's' page.")
         if (movedIn === false) {
+			setIsLoading(true)
             await updateMovedIn(id, true)
+			setIsLoading(false)
             return setMovedIn(true)
         }
         await updateMovedIn(id, false)
@@ -119,8 +135,10 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
     }
 
     const cards = async () => {
+		setIsLoading(true)
         const cards = await getAllResident_Cards();
         setResident_Cards(cards)
+		setIsLoading(false)
     }
 
     const userId = user.id
@@ -143,8 +161,11 @@ const Upcoming_moves = ({ user, setNumberFutureResidents, setNumberPastResidents
 
     const handleDeleteResidentCard = async (id) => {
         setIsDeleteCard(true)
+		setIsLoading(true)
         await deleteResident_Card(id)
         setIsDeleteCard(false)
+		setIsLoading(false)
+		alert("Resident card sucessfully deleted.")
     }
 
     // Variables for calculations

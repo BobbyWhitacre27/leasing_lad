@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register, login } from "../api/index.js"
 
-const Register = ({setUser, setToken}) => {
+const Register = ({setUser, setToken, setIsLoading}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -18,19 +18,23 @@ const Register = ({setUser, setToken}) => {
             setMessage("Passwords do not match!")
             return
           }
+		  setIsLoading(true)
           const signUp = await register(username, password);
           if (signUp.error) {
             setMessage(signUp.message);
+			setIsLoading(false)
             return;
             }
           if (signUp) {
             const logIn = await login(username, password);
             if (logIn.error) {
                 setMessage(logIn.message);
+				setIsLoading(false)
             } else {
                 setToken(logIn.token);
                 setUser(logIn.user);
                 localStorage.setItem('token', JSON.stringify(logIn.token));
+				setIsLoading(false)
                 navigate('/Profile');
             }
             }
@@ -60,7 +64,7 @@ const Register = ({setUser, setToken}) => {
                     <div>
                         <label for="username" class="sr-only">Username</label>
 
-                        <div class="relative">
+                        <div class="">
                             <input
                               
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
@@ -74,7 +78,7 @@ const Register = ({setUser, setToken}) => {
                     <div>
                         <label for="password" class="sr-only">Password</label>
 
-                        <div class="relative">
+                        <div class="">
                             <input
                                 type="password"
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"

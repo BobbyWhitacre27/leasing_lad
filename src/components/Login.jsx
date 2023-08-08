@@ -4,7 +4,7 @@ import { login } from "../api/index.js"
 
 
 
-const Login = ({ setToken, setUser }) => {
+const Login = ({ setToken, setUser, setIsLoading }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -18,10 +18,12 @@ const Login = ({ setToken, setUser }) => {
             if (password.length < 8) {
                 setMessage('Password is too short!');
             }
+			setIsLoading(true)
             const logIn = await login(username, password);
             if (logIn.error) {
                 if(logIn.message === "Cannot read properties of undefined (reading 'password')"){
                     setMessage("Please check username or password")
+					setIsLoading(false)
                     return
                 }
                 setMessage("Please check username and password");
@@ -30,6 +32,7 @@ const Login = ({ setToken, setUser }) => {
                 setToken(logIn.token);
                 setUser(logIn.user);
                 localStorage.setItem('token', JSON.stringify(logIn.token));
+				setIsLoading(false)
                 navigate('/Profile');
             }
         } catch (error) {
@@ -60,7 +63,7 @@ const Login = ({ setToken, setUser }) => {
                     <div>
                         <label for="email" class="sr-only">Email</label>
 
-                        <div class="relative">
+                        <div class="">
                             <input
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter username"
@@ -74,7 +77,7 @@ const Login = ({ setToken, setUser }) => {
                     <div>
                         <label for="password" class="sr-only">Password</label>
 
-                        <div class="relative">
+                        <div class="">
                             <input
                                 type="password"
                                 class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
